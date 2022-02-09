@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@500&display=swap');
+
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  transition-duration: 200ms;
+  width: 10vw;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin: 0 0rem;
+  top: 5.5rem;
+  right: .8rem;
+  z-index:80;
+  background-color: rgba(255, 255, 255);
+  border-radius: 10px;
+  animation: mymove 400ms;
+}
+
+@keyframes mymove {
+  from {
+    right: -45rem;
+  }
+
+  to {
+   right: .8rem;
+  }
+}
+
+.modalContainer1 {
+  display: none;
+}
+
+
+
