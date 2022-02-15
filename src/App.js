@@ -27,7 +27,7 @@ export default function App() {
 
   const minPageLimit = 1 // Número mínimo de páginas 
 
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1) // Estado inicial da quantidade dos produtos
 
   const changePage = (page) => { // função que reencaminha o utilizador para a página que selecionou 
         setCurrentPage(page.target.id)
@@ -133,8 +133,6 @@ export default function App() {
 
   const [productInfo, setProductInfo] = useState([]) // Array que irá conter os produtos que o utilizador selecionou 
 
-  console.log(productInfo )
-
   const selectedProduct = (product) => { // função que adiciona produtos que utilizador pretende comprar ao array productInfo. O spread Operator insere um novo objeto com as info do produto que o utilizador seleciona.
       product.map(product => {
          setProductInfo(
@@ -145,11 +143,13 @@ export default function App() {
             meal: product.meal,
             extras: selectedExtra,
             quantity: 1,
-            price: product.price 
+            price: product.price,
+            stock: product.stock
             }
           ]
          )
-      })
+      }
+      )
 
       if(initialValue == 0) { // se o valor do saco de compras for 0, assim que o utilizador selecionar um produto faz o incremento do mesmo, caso algum produto seja eliminado do saco de compras irá acontecer um decremento do mesmo, não existindo possibilidade e haver número inferior a 0
         setInitialValue(productInfo.length + 1)
@@ -220,7 +220,7 @@ export default function App() {
                   removeProductFromCheckOut={(e) => removeProductFromCheckOut(e)}  
                   searchProduct={(e) => searchProduct(e)}  
                   increaseQuantity={increaseQuantity} 
-                  decreaseQuantity={decreaseQuantity}      
+                  decreaseQuantity={decreaseQuantity}  
                 />
               }
             />

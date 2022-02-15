@@ -11,15 +11,6 @@ export default function Modal(props) {
     return props.name.replace(/\s+/g, "-") // Regex
   } 
 
-   /* let [stock, setStock] = useState(props.stock) 
-
-    const changeStock = (product) => {
-      if(stock > -1){
-        setStock(stock -= 1)
-      } else if(stock == -1) {
-        setStock(props.stock)
-      }
-    }  */
 
   return (
     <div className={props.hide}>
