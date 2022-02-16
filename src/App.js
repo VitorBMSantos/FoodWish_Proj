@@ -29,7 +29,11 @@ export default function App() {
 
   const [quantity, setQuantity] = useState(1) // Estado inicial da quantidade dos produtos
 
-  const changePage = (page) => { // função que reencaminha o utilizador para a página que selecionou 
+  const [stock, setStock] = useState(10)
+
+  console.log(stock)
+
+  const changePage = (page) => { // função que direciona o utilizador para a página que selecionou 
         setCurrentPage(page.target.id)
     } 
 
@@ -151,6 +155,12 @@ export default function App() {
       }
       )
 
+      if(product.quantity == 1 ){
+        setStock(product.stock -=1)
+      } else if (product.quantity >= 10) {
+        setStock(0)
+      }
+
       if(initialValue == 0) { // se o valor do saco de compras for 0, assim que o utilizador selecionar um produto faz o incremento do mesmo, caso algum produto seja eliminado do saco de compras irá acontecer um decremento do mesmo, não existindo possibilidade e haver número inferior a 0
         setInitialValue(productInfo.length + 1)
       } else if (initialValue == initialValue){
@@ -165,15 +175,23 @@ export default function App() {
   }
 
   const increaseQuantity = (product) => { // função que permite aumentar a quantidade do produto selecionado 
+    if(product.quantity >= 1 && product.quantity <= 9){
       setQuantity(product.quantity += 1)
+      setStock(product.stock -= 1)
+    } else if(product.quantity == 10){
+      setQuantity(10)
+    }
   }
 
   const decreaseQuantity = (product) => { // função que permite diminuir a quantidade do produto selecionado com a condição que quando a quantidade for igual a 1, manter o valor a 1
     if(product.quantity > 1) {
       setQuantity(product.quantity -= 1)
+      setStock(product.stock += 1)
     } else if(product.quantity == 1) {
       setQuantity(1)
+      setStock(stock)
     }
+    
   }
 
   const arrPrice = [] // Array que irá armazenar o preço de todos os produtos selecionados através do map(abaixo)
@@ -220,7 +238,9 @@ export default function App() {
                   removeProductFromCheckOut={(e) => removeProductFromCheckOut(e)}  
                   searchProduct={(e) => searchProduct(e)}  
                   increaseQuantity={increaseQuantity} 
-                  decreaseQuantity={decreaseQuantity}  
+                  decreaseQuantity={decreaseQuantity}
+                  stock={stock}
+                  productInfo={productInfo}
                 />
               }
             />

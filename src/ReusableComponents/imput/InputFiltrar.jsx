@@ -3,17 +3,17 @@ import './inputFiltrar.css'
 
 export default function InputFiltrarProdutos(props) {
 
-    const [width, setWidth] = useState("w-20 rounded-full py-1 px-1.5 duration-700 bg-transparent")
+    const [width, setWidth] = useState("w-20 rounded-full py-1 px-1.5 duration-700 bg-transparent") // Estado inicial do campo de pesquisa de produtos
 
-    const [rotate, setRotate] = useState("h-6 w-6 text-white absolute top-1 left-3 rotate-0")
+    const [rotate, setRotate] = useState("h-6 w-6 text-white absolute top-1 left-3 rotate-0") // estado inicial da seta quer se encontra dentro da barra de pesquisa 
 
-    const [input, setInput] = useState("")
+    const [input, setInput] = useState("") // Estado inicial do placeholder (string vazia)
 
-    const [inputValue, setInputValue] = useState("")
+    const [inputValue, setInputValue] = useState("") // Estado inicial do value do imput (string vazia)
 
-    const [showInput, setshowInput] = useState(props.showInput)
+    const [showInput, setshowInput] = useState(props.showInput)  // Este estado representa a visibilidade do campo de pesquisa, sendo o seu estado na homepage hidden e no main encontra-se visible (useEffect)
 
-    useEffect(() => {
+    useEffect(() => { // Usado para mudar o estado do showInput
         const onScroll = () =>{
             if(window.scrollY > 700){
             setshowInput("x-2 mr-4 relative duration-300")
@@ -27,7 +27,7 @@ export default function InputFiltrarProdutos(props) {
         return () => window.removeEventListener('scroll', onScroll); 
     }, [])
 
-    let increaseWidth = () => {
+    let increaseWidth = () => { // função que permite mudar os estados das constantes acima definidas
          if(width === "w-20 rounded-full py-1 px-1.5 duration-500 bg-transparent"){ 
             setWidth("stretch rounded-full py-1 pl-11 duration-500 placeholder")
             setRotate("h-6 w-6 text-gray-800 absolute top-1 left-3 rotate-180  duration-500")

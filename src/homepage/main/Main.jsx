@@ -5,7 +5,8 @@ import CatalogPage from '../../ReusableComponents/CatalogComp/CatalogPage'
 
 export default function Main(props) {
 
-
+    // Este componente é o que suporta os componentes catalogPage e modalComp
+    
      return (
          <div className="catalogContainer relative" id="main">
             <CatalogPage
@@ -24,6 +25,7 @@ export default function Main(props) {
                 openProduct={props.openProduct}
                 currentMeals={props.currentMeals}
                 selectedProducts={props.selectedProducts}
+                stock={props.stock}
             />
          </div>
      )

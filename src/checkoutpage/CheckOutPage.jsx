@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CheckOutPage(props) {
 
-  const goToHomePage = useNavigate()
+  const goToHomePage = useNavigate() // método de navegação para a página principal ao clique do icon (linha 16)
 
-  const iconColor = "#cc5500"
+  const iconColor = "#cc5500" // cor Stroke (linha 15) experimental
 
 
   return ( 

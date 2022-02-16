@@ -4,13 +4,14 @@ import './modal.css'
 export default function Modal(props) {
 
   const removeNameWhiteSpaces = () => {
-   return props.name.replace(/\s+/g, "_") // Regex
+   return props.name.replace(/\s+/g, "_") // Função para criar um identificador único (atributo id)
   }
 
   const removeNameWhiteSpaces1 = () => {
-    return props.name.replace(/\s+/g, "-") // Regex
+    return props.name.replace(/\s+/g, "-") // Função para criar um identificador único (atributo key)
   } 
 
+  console.log(props.stock)
 
   return (
     <div className={props.hide}>
@@ -40,10 +41,10 @@ export default function Modal(props) {
           }
           <div className="modalStock">
             <h2 className="price">Price: €{props.price}</h2>
-            <p id={props.product.id}>
-              Stock:
+            <p>
+            Stock:
               {
-                props.stock <= 10 && props.stock > 0 ? <span className="visaSign"> ✓ </span> : <span className="xSign"> x </span>
+               props.stock <= 10 && props.stock > 1 ? <span className="visaSign"> ✓ </span> : <span className="xSign"> x </span>
               }
             </p>
           </div>

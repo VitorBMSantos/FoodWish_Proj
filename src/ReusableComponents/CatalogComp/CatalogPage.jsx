@@ -21,7 +21,7 @@ export default function CatalogPage(props) {
                 </svg>
             </ul>
                 {
-                    // passar para componente Pai
+                    // criação card de cada produto
                     props.product.map(product => 
                         <Modal 
                             id={product.id}
@@ -31,7 +31,7 @@ export default function CatalogPage(props) {
                             description={product.description}
                             extras={product.extras}
                             price={product.price}
-                            stock={product.stock}
+                            stock={props.stock}
                             hide={props.modalFirstState}
                             closeProduct={props.closeProduct}
                             checkBoxOnChange={props.checkBoxOnChange}

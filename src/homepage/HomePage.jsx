@@ -6,29 +6,30 @@ import ShoppingCart from '../ReusableComponents/ShoppingCarButton/ShoppingCart'
 import UserLocation from '../ReusableComponents/userLocation/UserLocation'
 import StartSessionButton from '../ReusableComponents/startSessionButton/StartSessionButton'
 import InputFiltrar from '../ReusableComponents/imput/InputFiltrar'
+import Footer from '../ReusableComponents/footer/Footer'
 import { useNavigate } from 'react-router-dom';
 
 
 export default function Header(props)  {
 
-     const [bckColor, setBckColor] = useState("headerDiv");
+     const [bckColor, setBckColor] = useState("headerDiv"); // Estado inicial background header (alterado no useEffect)
 
-     const [colorMenu, setColorMenu] = useState("h-8 w-16 text-gray-800 duration-300") 
+     const [colorMenu, setColorMenu] = useState("h-8 w-16 text-gray-800 duration-300") // Estado inicial cor icon Menu (alterado no useEffect)
 
-     const [visibility, setVisibility] = useState("navBarLayout")
+     const [visibility, setVisibility] = useState("navBarLayout") // Estado inicial da navegação (hidden), muda o estado quando o utilizador clica no icon menu (alterado no useEffect)
 
-     const [position, setPosition] = useState("rotate-0 duration-300")
+     const [position, setPosition] = useState("rotate-0 duration-300") // Estado inicial do icon menu, assim que clicado roda 90º (alterado no useEffect)
 
-     const [secondaryColorMenu, setSecondaryColorMenu] = useState("h-8 w-16 text-white duration-300")
+     const [secondaryColorMenu, setSecondaryColorMenu] = useState("h-8 w-16 text-white duration-300") // Cor do menu quando vai para secção main (alterado no useEffect)
 
-     const [colorPShoppingCart, setColorPShoppingCart] = useState("text-gray-700 text-xl duration-300")
+     const [colorPShoppingCart, setColorPShoppingCart] = useState("text-gray-700 text-xl duration-300") // Cor da quantidade do saco de compras quando vai para a secção main (alterado no useEffect)
 
-     const [secondaryColorShoppingCart, setSecondaryColorShoppingCart] = useState("text-white text-xl duration-300")
+     const [secondaryColorShoppingCart, setSecondaryColorShoppingCart] = useState("text-white text-xl duration-300") // Cor do saco de compras quando vai para a secção main (alterado no useEffect)
 
     const [input] = useState("x-2 mr-0 relative hidden duration-300")
     
     
-    useEffect(() => {
+    useEffect(() => { // Utilizaçção de dados que não dependendem do componente 
         const onScroll = () =>{
             if(window.scrollY > 200){
             setBckColor("headerDiv1")
@@ -51,7 +52,7 @@ export default function Header(props)  {
     }, [])
 
 
-    let changingMenu = () => {
+    let changingMenu = () => { // Função que faz rodar o icon menu 90º e a navBar fica visivel para o utilizador 
         if(position === "rotate-0 duration-300"){
             setPosition("rotate-90 duration-300 mx-10")
             setVisibility("navBarLayout1")
@@ -135,6 +136,10 @@ export default function Header(props)  {
                 renderProducts={props.renderProducts}
                 product={props.product}
                 selectedProducts={props.selectedProducts}
+                stock={props.stock}
+            />
+            <Footer
+                className="footerContainer"
             />
         </>
     )

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 export default function MenuButton(props)  {
 
     const [colorP, setColorP] = useState(props.color) 
-   // porquê estar da dar só no segundo clique
 
     useEffect(() => {
         const onScroll = () =>{
